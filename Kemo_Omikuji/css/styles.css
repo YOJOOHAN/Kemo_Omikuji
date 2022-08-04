@@ -1,0 +1,371 @@
+/* 全体の背景画像 */
+body {
+  min-height: 100%;
+  background-image: url(../img/main.png);
+  background-repeat: no-repeat;
+  /* background-position: center; */
+  background-size: cover;
+  overflow: hidden;
+}
+
+
+/* フェードインの設定
+画面を暗くする */
+.fade{
+  position:absolute;
+  top:0px;
+  left:0px;
+
+  width:100%;
+  height:100%;
+
+  background-color:#000000;
+  opacity:0;
+  visibility:hidden;
+  z-index:4;
+}
+
+.fade.is-active{
+ transition:opacity 1s;
+ opacity:0.7;
+}
+/* 画面を白くする */
+.fade.is-active2{
+  animation:flash forwards 1s;
+}
+
+@keyframes flash{
+  0%{background-color: #000000;}
+  50%{background-color: rgb(255, 255, 255);}
+  100%{background-color: #000000;}
+}
+
+.fade.is-active3{
+  z-index: 30;
+  animation:flash2 forwards 0.7s;
+}
+
+@keyframes flash2{
+  0%{background-color: #000000;}
+  50%{background-color: rgb(84, 84, 84);}
+  100%{background-color: #000000;}
+}
+
+
+
+/* ボタンの設定 */
+
+
+#btn {
+  width:18%;
+  top: 18.6vw;
+  left: 40.1vw;
+  opacity: 0.8;
+  position: absolute;
+  cursor:pointer;
+  user-select: none;
+  z-index: 1;
+}
+
+#btn:hover {
+  opacity:1;
+}
+
+#btn:active{
+  transform: scale(0.97,0.97);
+}
+
+/* カットインの設定 */
+/* 狐のカットイン */
+.K_cutin{
+  opacity: 0;
+  width:50vw;
+  position:absolute;
+  left:-5vw;
+  z-index: 5;
+  pointer-events: none;
+  user-select: none;
+}
+
+.K_cutin.is-active{
+animation:1.5s forwards move1;
+}
+
+@keyframes move1{
+  0%{opacity:0}
+  50%{opacity:0.9;}
+  100%{opacity:0;
+  transform: translateY(-10vw);}
+}
+
+/* 狸のカットイン */
+.T_cutin{
+  opacity: 0;
+  width:50vw;
+  position:absolute;
+  z-index: 5;
+  top:-12vw;
+  right:-5vw;
+  pointer-events: none;
+  user-select: none;
+}
+
+.T_cutin.is-active{
+  animation:1.5s forwards move2;
+  }
+  
+  @keyframes move2{
+    0%{opacity:0}
+    50%{opacity:0.9;}
+    100%{opacity:0;
+    transform: translateY(10vw);}
+  }
+  
+/* 炎のカットイン */
+/* 公転の制御 */
+.soto{
+  position: absolute;
+  top:28vw;
+  left: 49vw;
+  width: 1px;
+  height:1px;
+  z-index: 11;
+  pointer-events: none;
+  user-select: none;
+}
+
+.soto.is-active{
+  transition:all cubic-bezier(0.3, 0, 1, 0.5) 3s;
+  transform: rotate(8turn);
+}
+
+/* 赤い炎の制御 */
+.red{
+  width: 11vw;
+  opacity: 0;
+  position:absolute;
+  z-index: 5;
+  top: -10vw;
+  left:-24vw;
+  pointer-events: none;
+  user-select: none;
+}
+
+.red.is-active1{
+  animation: 2s forwards rotate1;
+}
+
+@keyframes rotate1{
+  0%{opacity:0;}
+  50%{opacity:1;
+  transform: rotate(0deg);}
+  100%{opacity:1;
+  transform: rotate(180deg);}
+}
+
+.red.is-active2{
+  animation:3s cubic-bezier(0.3, 0, 1, 0.5) forwards rotate2;
+}
+  
+  @keyframes rotate2{
+    0%{opacity:1;
+      transform:scale(1) rotate(180deg);}
+    100%{opacity:0;
+      transform:scale(3) rotate(180deg) translateX(16vw) ;} 
+  }
+
+/* 緑の炎の制御 */
+.green{
+  width: 11vw;
+  opacity: 0;
+  position:absolute;
+  z-index: 5;
+  top: -10vw;
+  left:13vw;
+  pointer-events: none;
+  user-select: none;
+}
+
+.green.is-active1{
+  transition: opacity 2s;
+  opacity: 1;
+}
+
+.green.is-active2{
+  animation:3s cubic-bezier(0.3, 0, 1, 0.5) forwards rotate3;
+  }
+  
+  @keyframes rotate3{
+    0%{opacity:1;
+      transform:scale(1) rotate(0deg);}
+    100%{opacity:0;
+      transform:scale(3) rotate(0deg) translateX(16vw) ;} 
+}
+
+/* スタンプアニメの制御 */
+.stamp{
+  pointer-events: none;
+  position: absolute;
+  width: 300vw;
+  z-index: 16;
+  top:-250vw;
+  left:-103vw;
+  opacity: 0;
+  user-select: none;
+}
+
+.stamp.is-active{
+  animation:1s ease-in forwards stamping;
+}
+
+@keyframes stamping{
+  0%{opacity: 0;
+  width:300vw}
+  10%{opacity: 1;
+  }
+  80%{opacity: 1;
+    width: 20vw;
+    top:10vw;
+    left:38.7vw;
+  }
+  100%{width: 20vw;
+    opacity: 0;
+    top:10vw;
+    left:38.7vw;
+  }
+}
+
+/* 煙の制御 */
+.smoke{
+  position: absolute;
+  width: 40vw;
+  top:5vw;
+  left:28vw;
+  z-index: 16;
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.smoke.is-active{
+ animation: 1s linear forwards smoking;
+}
+
+@keyframes smoking{
+  0%{opacity:0}
+  50%{opacity:0.3;
+  transform: scale(1.1);}
+  100%{opacity: 0;
+  transform: scale(1.2);}
+}
+
+/* ピンクの肉球 */
+.pink{
+position: absolute;
+width: 20vw;
+opacity: 0;
+top:10vw;
+left:38.7vw;
+z-index: 15;
+pointer-events: none;
+user-select: none;
+}
+
+.pink.is-active{
+transition:opacity 1s;
+opacity:1;
+}
+
+.pink.is-active2{
+  transition: transform 1s;
+  transform: translateY(-5vw);
+}
+
+/* ラッキーアイテム1 */
+.item1{
+  opacity: 0;
+  position: absolute;
+  top: 32vw;
+  left:42vw;
+  font-weight: bold;
+  font-size: 1.8vw;
+  color: aliceblue;
+  z-index: 20;
+  -webkit-text-stroke: 0.08vw rgb(0, 0, 0); 
+}
+
+.item1.is-active{
+transition: opacity 1s;
+opacity: 1;
+}
+
+/* ラッキーアイテム2 */
+.item2{
+  opacity: 0;
+  letter-spacing: 0.05em;
+  position: relative;
+  top: 36vw;
+  text-align: center;
+  font-weight: bolder;
+  font-size: 2.3vw;
+  color: aliceblue;
+  z-index: 20;
+  -webkit-text-stroke: 0.08vw rgb(0, 0, 0); 
+  transform: translateX(-0.5vw);
+}
+
+.item2.is-active{
+  transition: all 1s;
+  opacity: 1;
+}
+
+/* もう一度ボタンの出現 */
+.back{
+opacity:0;
+position: absolute;
+width: 8vw;
+right:10vw;
+top: 40vw;
+z-index: 21;
+user-select: none;
+-webkit-user-drag: none;
+
+}
+
+.back.is-active{
+  transition: opacity 1s;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.back.is-active:hover {
+  opacity:1;
+}
+
+.back:active{
+  transform: scale(0.9,0.9);
+}
+
+/* 2つ目のsomke */
+.smoke2{
+  position: absolute;
+  width: 10vw;
+  top:15vw;
+  left:43.5vw;
+  z-index: 22;
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.smoke2.is-active{
+ animation: 0.3s linear forwards smoking2;
+}
+
+@keyframes smoking2{
+  0%{opacity:0}
+  80%{opacity:0.7;
+  transform: scale(2.9);}
+  100%{opacity: 0;
+  transform: scale(3.0);}
+}
